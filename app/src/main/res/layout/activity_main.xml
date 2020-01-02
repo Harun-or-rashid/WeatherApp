@@ -75,6 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kolorzeg"
+            android:id="@+id/zone"
             android:textColor="#ffffff"
             android:textSize="50sp" />
 
