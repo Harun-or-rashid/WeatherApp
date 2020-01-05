@@ -208,10 +208,10 @@ public class WeatherPojo {
         private Double feelsLike;
         @SerializedName("temp_min")
         @Expose
-        private Integer tempMin;
+        private Float tempMin;
         @SerializedName("temp_max")
         @Expose
-        private Integer tempMax;
+        private Float tempMax;
         @SerializedName("pressure")
         @Expose
         private Integer pressure;
@@ -235,19 +235,19 @@ public class WeatherPojo {
             this.feelsLike = feelsLike;
         }
 
-        public Integer getTempMin() {
+        public Float getTempMin() {
             return tempMin;
         }
 
-        public void setTempMin(Integer tempMin) {
+        public void setTempMin(Float tempMin) {
             this.tempMin = tempMin;
         }
 
-        public Integer getTempMax() {
+        public Float getTempMax() {
             return tempMax;
         }
 
-        public void setTempMax(Integer tempMax) {
+        public void setTempMax(Float tempMax) {
             this.tempMax = tempMax;
         }
 
