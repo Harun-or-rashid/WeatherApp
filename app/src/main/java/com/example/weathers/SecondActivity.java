@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,9 @@ public class SecondActivity extends AppCompatActivity {
     private String app_id = "b6907d289e10d714a6e88b30761fae22";
     private String lat = "35";
     private String lon = "139";
+    private TextView temp;
+    private TextView country;
+    private TextView sunrise;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,6 +38,9 @@ public class SecondActivity extends AppCompatActivity {
         images=new ArrayList<>();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+        temp=(TextView)findViewById(R.id.secondTempTV);
+        country=(TextView)findViewById(R.id.countrryTV);
+        sunrise=(TextView)findViewById(R.id.sunriseTV);
         recycler=(RecyclerView) findViewById(R.id.recycle);
         imgadapter=new ImageAdapter(images,context);
         recycler.setAdapter(imgadapter);
@@ -49,6 +57,11 @@ public class SecondActivity extends AppCompatActivity {
             public void onResponse(Call<WeatherPojo> call, Response<WeatherPojo> response) {
         WeatherPojo weather=new WeatherPojo();
                  weather = response.body();
+
+                 temp.getTextSize();
+                 temp.setText(weather.getMain().getTemp().toString()+"\u00B0");
+                 country.setText("Sunrise "+weather.getSys().getCountry().toString());
+                 sunrise.setText("Japan Tokoyo "+weather.getSys().getSunrise().toString());
 
                 Log.d("Weather","Result "+weather.getMain().getTemp());
             }
