@@ -10,7 +10,9 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +31,8 @@ public class SecondActivity extends AppCompatActivity {
     private TextView temp;
     private TextView country;
     private TextView sunrise;
+    private Calendar cal;
+    private double sunriseT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -42,6 +46,7 @@ public class SecondActivity extends AppCompatActivity {
         country=(TextView)findViewById(R.id.countrryTV);
         sunrise=(TextView)findViewById(R.id.sunriseTV);
         recycler=(RecyclerView) findViewById(R.id.recycle);
+        cal=Calendar.getInstance(Locale.ENGLISH);
         imgadapter=new ImageAdapter(images,context);
         recycler.setAdapter(imgadapter);
         //Retrofit Object creating
@@ -61,7 +66,9 @@ public class SecondActivity extends AppCompatActivity {
                  temp.getTextSize();
                  temp.setText(weather.getMain().getTemp().toString()+"\u00B0");
                  country.setText("Sunrise "+weather.getSys().getCountry().toString());
-                 sunrise.setText("Japan Tokoyo "+weather.getSys().getSunrise().toString());
+                 sunriseT=weather.getSys().getSunrise();
+                 sunrise.setText("Japan Tokoyo "+weather.getSys().getSunrise());
+
 
                 Log.d("Weather","Result "+weather.getMain().getTemp());
             }
